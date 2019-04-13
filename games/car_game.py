@@ -67,7 +67,7 @@ if __name__  == "__main__":
     background = pygame.Surface(screen.get_size())
     background.fill((255, 255, 255))
     pygame.display.set_caption('Moving Object')
-    car = MovingObj(screen, 'Calculus/car.png')
+    car = MovingObj(screen, 'games/car.png')
     sprites = pygame.sprite.Group()
     sprites.add(car)
     keepGoing = True
