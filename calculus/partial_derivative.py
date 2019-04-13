@@ -3,8 +3,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import patches, lines
-from canvas2d import canvas2D
-from text import TextAnim
+from canvas.canvas2d import canvas2D
+from text.text import TextAnim
 import matplotlib.patheffects as path_effects
 
 
