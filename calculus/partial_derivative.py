@@ -115,7 +115,7 @@ class PartDeriv(canvas2D):
     def key_press(self, event):
         if event.key == 'i':
             # Save Image with background
-            plt.savefig('Regresion/linear_regression/animations/pd3.png', dpi=None, facecolor=self.bg_color)
+            plt.savefig('pd.png', dpi=None, facecolor=self.bg_color)
         
         # elif event.key == 'I':
         #     # Save Image with NO background
