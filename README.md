@@ -5,6 +5,14 @@ Still a lot to work on, but it's useful for simple mathematical examples.
 The project is intended to create educational animations, particularly videos, 
 so each part runs separately and you can save each section of your animation.
 
+### Some examples:
+A cube Skaleton
+![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/cube_skeleton.gif)
+Partial derivatives
+![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/derivative.gif)
+Error functions
+![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/e3e4.gif)
+
 ### Libraries
 I am using mainly matplotlib, although I added a few libraries for animations in the requirements.txt file, 
 since I use them from time to time, as openCV, pygame, moviepy, glfw, glumpy, etc 
