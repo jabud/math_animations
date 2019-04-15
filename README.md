@@ -6,11 +6,16 @@ The project is intended to create educational animations, particularly videos,
 so each part runs separately and you can save each section of your animation.
 
 ### Some examples:
-A cube Skaleton
+A cube Skaleton, from geometry folder.
+
 ![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/cube_skeleton.gif)
-Partial derivatives
+
+Partial derivatives from calculus.
+
 ![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/derivative.gif)
-Error functions
+
+Error functions from linear regression.
+
 ![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/e3e4.gif)
 
 ### Libraries
