@@ -182,8 +182,8 @@ class ErrorEquation(canvas2D):
             self.ax.spines['bottom'].set_color('none')
         # show x-y axes with x with Ceres values
         elif event.key=='1':
-            self.animate_axes()
-            # self.static_canvas()
+            # self.animate_axes()
+            self.static_canvas()
         elif event.key=='2':
             self.last_eg()
         # draw line with x

@@ -43,7 +43,7 @@ class LineEquation(canvas2D):
         text.set_path_effects([path_effects.Stroke(linewidth=5, foreground='black'),
                        path_effects.Normal()])
 
-        plt.show()
+        # plt.show()
 
     def line_anim_x(self, i):
         for txt in self.ax.texts:
@@ -57,8 +57,8 @@ class LineEquation(canvas2D):
         self.line.set_data(self.x, self.y)
         self.ax.add_line(self.line)
 
-        # t = r"$pred = \sum_{i=0}^n (m\mathbb{%s}+b)$"%(str(int(i+120)))
-        # self.show_text(t)
+        t = r"$line = \sum_{i=0}^n (m\mathbb{%s}+b)$"%(str(int(i+120)))
+        self.show_text(t)
         
         return self.ax,
         # return mplfig_to_npimage(self.fig)
@@ -89,8 +89,8 @@ class LineEquation(canvas2D):
         self.line.set_data(self.x, self.y)
         self.ax.add_line(self.line)
 
-        # t = r"$pred = \sum_{i=0}^n (\mathbb{%s}x_i+b)$"%(str(self.m[i]))
-        # self.show_text(t)
+        t = r"$line = \sum_{i=0}^n (\mathbb{%s}x_i+b)$"%(str(self.m[i]))
+        self.show_text(t)
 
         return self.ax,
         # return mplfig_to_npimage(self.fig)
@@ -119,8 +119,8 @@ class LineEquation(canvas2D):
         self.line.set_data(self.x, self.y)
         self.ax.add_line(self.line)
 
-        # t = r"$pred = \sum_{i=0}^n (mx_i+\mathbb{%s})$"%(str(self.b[i]))
-        # self.show_text(t)
+        t = r"$line = \sum_{i=0}^n (mx_i+\mathbb{%s})$"%(str(self.b[i]))
+        self.show_text(t)
 
         return self.ax,
         # return mplfig_to_npimage(self.fig)

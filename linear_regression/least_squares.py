@@ -34,8 +34,8 @@ def linear_regression(x_train, y_train):
 class LeastSquares(canvas2D):
     canvframes = 95
     def __init__(self, theme='dark'):
-        super().__init__(title='Mínimos Cuadrados', size_xy=(8,80), frames=self.canvframes, xlabel=u'días', atype='l',
-                         ylabel=u'latitud', everyx=1, everyy=10, grid=False, theme=theme, xticklabels=np.arange(0,9), 
+        super().__init__(title='', size_xy=(8,80), frames=self.canvframes, xlabel='', atype='l',
+                         ylabel='', everyx=1, everyy=10, grid=False, theme=theme, xticklabels=np.arange(0,9), 
                          yticklabels=np.arange(10,90,10))
         # colors for dark bg
         if theme=='dark':
@@ -159,7 +159,8 @@ class LeastSquares(canvas2D):
     def animate_best_fit(self, i):
         for txt in self.ax.texts:
             txt.set_visible(False)
-
+        if i>=107:
+            i=107
         # calculate best line
         # loop
         pred = self.a_0 + self.a_1 * self.x
@@ -176,7 +177,8 @@ class LeastSquares(canvas2D):
         # MSE rounded
         MSE = round(mean_sq_er, 2)
         # update error text
-        self.ax.text(s='Error = {}'.format(str(MSE)), fontproperties=self.prop,
+        if MSE>350.58:
+            self.ax.text(s='Error = {}'.format(str(MSE)), fontproperties=self.prop,
                      x=4, y=10, color=self.error_color,
                      fontsize=50, alpha=1)
         # update rectangles
@@ -194,7 +196,7 @@ class LeastSquares(canvas2D):
         self.rect_6.set_width(error[5]/10)
         if MSE<=350.58:
             # update error text
-            self.ax.text(s='Error = {}'.format(str(MSE)), fontproperties=self.prop,
+            self.ax.text(s='Error = 350.58', fontproperties=self.prop,
                          x=4, y=10, color='green',
                          fontsize=50, alpha=1)
             self.rect_1.set_color('green')
@@ -235,7 +237,8 @@ class LeastSquares(canvas2D):
             plt.cla()
             plt.xticks(ticks=[], labels='')
             plt.yticks(ticks=[], labels='')
-            self.animate_axes()
+            # self.animate_axes()
+            self.static_canvas()
         elif event.key=='2':
             anim = animation.FuncAnimation(self.fig, self.animate_scatter, interval=1, frames=self.scatterframes, blit=False, repeat=False)
         elif event.key=='3':
@@ -249,10 +252,13 @@ class LeastSquares(canvas2D):
         elif event.key=='7':
             anim = animation.FuncAnimation(self.fig, self.animate_error, interval=1, frames=self.lineframes+1, blit=False, repeat=False)
         elif event.key=='8':
-            anim = animation.FuncAnimation(self.fig, self.animate_best_fit, interval=1, frames=self.bflframes+1, blit=False, repeat=False)
+            anim = animation.FuncAnimation(self.fig, self.animate_best_fit, interval=1, frames=150, blit=False, repeat=False)
+            # anim.save('e3.mp4',codec='png', fps=25,
+            # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
         elif event.key=='9':
-            anim = animation.FuncAnimation(self.fig, self.animate_predict, interval=1, frames=self.lineframes+1, blit=False, repeat=False)
-
+            anim = animation.FuncAnimation(self.fig, self.animate_predict, interval=1, frames=50, blit=False, repeat=False)
+            # anim.save('e4.mp4',codec='png', fps=25,
+            # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
         plt.show()
 
 def main():
