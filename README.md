@@ -6,7 +6,7 @@ The project is intended to create educational animations, particularly videos,
 so each part runs separately and you can save each section of your animation.
 
 ### Some examples:
-A cube Skaleton, from geometry folder.
+A cube skeleton, from geometry folder.
 
 ![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/cube_skeleton.gif)
 
