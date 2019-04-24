@@ -187,7 +187,7 @@ class TriangleSymm:
                                         frames=f, blit=False, repeat=False)
 
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('rot120.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
 
         plt.show()
@@ -197,7 +197,7 @@ class TriangleSymm:
                                         frames=f, blit=False, repeat=False)
 
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('rot120counter.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
 
         plt.show()
@@ -207,7 +207,7 @@ class TriangleSymm:
                                         frames=f, blit=False, repeat=False)
 
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('rot240.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
 
         plt.show()
@@ -217,7 +217,7 @@ class TriangleSymm:
                                         frames=f, blit=False, repeat=False)
 
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('rot240counter.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
 
         plt.show()
@@ -388,7 +388,7 @@ class TriangleSymm:
             anim = animation.FuncAnimation(self.fig, self.flip_c, interval=40, 
                                         frames=f, blit=False, repeat=False)
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('flip_c.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
         plt.show()
 
@@ -403,12 +403,12 @@ class TriangleSymm:
             anim = animation.FuncAnimation(self.fig, self.flip_c_inverse, interval=40, 
                                         frames=f, blit=False, repeat=False)
         # matplotlib
-        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # anim.save('flip_a_inverse.mp4',codec='png', fps=25,
         # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
         plt.show()
     
     def key_press(self, event):
-        axis='c'
+        axis='a'
         # Save Image with NO background color
         if event.key == 'I':
             plt.savefig('img.png', dpi=None, transparent=True)
@@ -423,18 +423,18 @@ class TriangleSymm:
         # Separeted animations    
         elif event.key=='1':
             # some action
-            self.animate_rotate120anticlock(130)
-            # self.animate_rotate240anticlock(260)
+            # self.animate_rotate120anticlock(180)
+            self.animate_rotate240anticlock(290)
         elif event.key=='2':
             # some action
-            self.animate_rotate120clock(130)
-            self.animate_rotate240clock(260)
+            # self.animate_rotate120clock(180)
+            self.animate_rotate240clock(290)
         elif event.key=='3':
             # some action
-            self.animate_flip(15, axis)
+            self.animate_flip(65, axis)
         elif event.key=='4':
             # some action
-            self.animate_flip_inverse(15, axis)
+            self.animate_flip_inverse(65, axis)
         plt.show()
 
 
