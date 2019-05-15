@@ -9,7 +9,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 class KernelExamples:
     # config canavas
-    def __init__(self, theme):
+    def __init__(self):
         # colors for dark bg
         self.bg_color = '#232323'
         self.fig = plt.figure(facecolor=self.bg_color)
@@ -113,9 +113,9 @@ def main():
     
     # Surfaces
     # svm.quadratic_surface()
-    svm.quadratic_surface2()
+    # svm.quadratic_surface2()
     # svm.rippled_surface()
-    # svm.peaked_surface()
+    svm.peaked_surface()
 
     # Configure position of graph in canvas
     plt.subplots_adjust(left=.5, bottom=.2, right=.9, top=.8, wspace=.20, hspace=.20)

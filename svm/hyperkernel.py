@@ -14,7 +14,7 @@ from sklearn.datasets.samples_generator import make_circles
 
 class HypKernel:
     # config canavas
-    def __init__(self, theme):
+    def __init__(self):
         # colors for dark bg
         self.bg_color = '#232323'
         self.fig = plt.figure(facecolor=self.bg_color)
