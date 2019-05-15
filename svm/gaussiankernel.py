@@ -5,6 +5,7 @@ import math
 import sklearn
 from matplotlib import font_manager as fm, rcParams
 import matplotlib.pyplot as plt
+# import matplotlib.animation as animation
 from matplotlib import cm
 from mpl_toolkits import mplot3d
 from mpl_toolkits.mplot3d import Axes3D
@@ -13,27 +14,13 @@ from sklearn.datasets.samples_generator import make_circles
 
 class GaussianKernel:
     # config canavas
-    def __init__(self, theme):
+    def __init__(self):
         # colors for dark bg
-        if theme=='dark':
-            self.bg_color = '#232323'
-            self.fig_color = '#232323'#d8d8d8
-            self.grid_color = '#7c2230'
-            self.data_color = '#20ad9d'
-            self.funct_color = '#e8dc55'
-        # colors for transparent versions
-        elif theme=='light':
-            self.bg_color = '#e2deb3'
-            self.fig_color = '#232323'
-            self.grid_color = '#46abea'
-            self.data_color = '#3c8c48'
-            self.funct_color = '#c43838'
+        self.bg_color = '#232323'
         self.fig = plt.figure(facecolor=self.bg_color)
         self.ax = Axes3D(self.fig, facecolor=self.bg_color)
         fpath = os.path.join(rcParams["datapath"], "alterebro_pixel_font/alterebro-pixel-font.ttf")
         self.prop = fm.FontProperties(fname=fpath)
-        # plt.xticks(ticks=[], labels='')
-        # plt.yticks(ticks=[], labels='')
         self.ax.spines['left'].set_color('none')
         self.ax.spines['bottom'].set_color('none')
 
@@ -53,23 +40,21 @@ class GaussianKernel:
         plt.xticks(ticks=np.arange(-1.2, 1.4, .2), labels='')
         plt.yticks(ticks=np.arange(-1.2, 1.4, .2), labels='')
         self.ax.grid(linewidth=20)
-        return self.fig, 
+        return self.fig,
+
 
 def main():
     # Hide toolbar from  window
     rcParams['toolbar'] = 'None'
 
     # Initiate class
-    svm = GaussianKernel(theme='dark')
+    svm = GaussianKernel()
     
+    # circles
     svm.circlesexample()
 
     # Configure position of graph in canvas
-    # Centered
     plt.subplots_adjust(left=.5, bottom=.2, right=.9, top=.8, wspace=.20, hspace=.20)
-    
-    # Full page
-    # plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=.20, hspace=.20)
 
     # showtime
     plt.show()
