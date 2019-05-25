@@ -9,8 +9,15 @@ class TextAnim:
                 alignment=None, size_lim=None, bbox=None, fig=None, ax=None):
         self.text = text
         # set custom font
-        fpath = os.path.join(rcParams["datapath"], "alterebro_pixel_font/alterebro-pixel-font.ttf")
-        self.font = fm.FontProperties(fname=fpath) if font=='pixel' else fm.FontProperties(fname=font)
+        self.font = font
+        fpath1 = os.path.join(rcParams["datapath"], "alterebro_pixel_font/alterebro-pixel-font.ttf")
+        fpath2 = os.path.join(rcParams["datapath"], "fipps/Fipps-Regular.otf")
+        if self.font=='pixel1':
+            self.fontprop = fm.FontProperties(fname=fpath1)
+        elif self.font=='pixel2':
+            self.fontprop = fm.FontProperties(fname=fpath2)
+        else: 
+            self.fontprop = fm.FontProperties(fname=font)
         self.x = x
         self.y = y
         self.rot = rot
@@ -59,12 +66,12 @@ class TextAnim:
         
         if self.atype=='typing':
             text = self.ax.text(x=self.x, y=self.y, s=self.text[:i], rotation=self.rot, 
-                                **self.alignment, bbox=self.bbox, alpha=1, fontproperties=self.font, 
+                                **self.alignment, bbox=self.bbox, alpha=1, fontproperties=self.fontprop, 
                                 fontsize=self.size, color=self.color, transform=self.ax.transAxes)
         elif self.atype=='increase':
             text = self.ax.text(x=self.x, y=self.y, s=self.text, rotation=self.rot, 
                                 **self.alignment, bbox=self.bbox, alpha=(i/(self.frames-1)), 
-                                fontproperties=self.font, fontsize=self.size*(i/(self.frames-1)), 
+                                fontproperties=self.fontprop, fontsize=self.size*(i/(self.frames-1)), 
                                 color=self.color, transform=self.ax.transAxes)
             # color edges of text
             text.set_path_effects([path_effects.Stroke(linewidth=5, foreground='black'),
@@ -72,24 +79,26 @@ class TextAnim:
         elif self.atype=='appear':
             text = self.ax.text(x=self.x, y=self.y, s=self.text, rotation=self.rot, 
                                 **self.alignment, bbox=self.bbox, alpha=(i/(self.frames-1)), 
-                                fontproperties=self.font, fontsize=self.size, 
+                                fontproperties=self.fontprop, fontsize=self.size, 
                                 color=self.color, transform=self.ax.transAxes)
-            # color edges of text
+        # color edges of text
+        if self.font=='pixel1':
             text.set_path_effects([path_effects.Stroke(linewidth=5, foreground='black'),
-                           path_effects.Normal()])
+                       path_effects.Normal()])
 
         return self.ax,
 
     def show_text(self):
-        text = self.ax.text(s=self.text, fontproperties=self.font,
+        text = self.ax.text(s=self.text, fontproperties=self.fontprop,
                      x=.5, y=.5, color=self.color, ha='center', va='center',
                      fontsize=self.size)
         if self.annot:
             plt.annotate(self.text, xycoords='data', textcoords='data', fontsize=80, 
-                    fontproperties=self.font, xy=(1,.5), xytext=(.7, .8), color=self.color,
+                    fontproperties=self.fontprop, xy=(1,.5), xytext=(.7, .8), color=self.color,
                     arrowprops=dict(arrowstyle="->", ec=self.color,fc=self.color, connectionstyle="arc3,rad=-0.4"))
         # color edges of text
-        text.set_path_effects([path_effects.Stroke(linewidth=5, foreground='black'),
+        if self.font=='pixel1':
+            text.set_path_effects([path_effects.Stroke(linewidth=20, foreground='black'),
                        path_effects.Normal()])
 
         plt.show()
@@ -129,35 +138,8 @@ def main():
     rcParams['toolbar'] = 'None'
     frames = 50
 
-    blue = '#14D8F7'
-    yellow = '#FCEE16'
-    # equations ================================================================================
-    line_eq = r"$pred = \sum_{i=0}^n (m\mathbb{120}+b)$"
-    line_eq_ext = r"$pred = (mx_1+b)+(mx_2+b)+(mx_3+b)+...+(mx_n+b)$"
-    error_eq = r"$E = \sum_{i=0}^n(pred_i - y_i)^2$"
-    error_exp = r"$pred=$ cada valor estimado, $y_i=$cada valor observado"
-    dm = r"$\frac{\delta E}{\delta m} = \frac{\sum_{i=0}^n\delta (pred_i - y_i)^2}{\delta m}$"
-    
-    dm_2 = r"$\sum_{i=0}^n (m x_i^2 + bx_i - x_iy_i) = 0$"
-    
-    db = r"$\frac{\delta E}{\delta b} = \frac{\sum_{i=0}^n\delta (pred_i - y_i)^2}{\delta b}$"
-    
-    db_2 = r"$\sum_{i=0}^n (m x_i + b - y_i) = 0$"
-    
-    m_eq = r"$m=\frac{\sum_{i=0}^nx_iy_i-b\sum_{i=0}^nx_i}{\sum_{i=0}^nx_i^2}$"
-    m_eq_2 = r"$m=\frac{\overline{x}\cdot\overline{y}-\overline{xy}}{\overline{x²}-\overline{x}^2}$"
-    b_eq = r"$b=\frac{\sum_{i=0}^ny_i-m\sum_{i=0}^nx_i}{n}$"
-    b_eq_2 = r"$\overline{y}+m\overline{x}$"
-
-    dedm = r"$\frac{\delta E}{\delta m}$"
-    dedb = r"$\frac{\delta E}{\delta b}$"
-    m_3 = r"$\frac{\overline{x}\cdot\overline{y}-\overline{xy}}{\overline{x²}-\overline{x}^2}$"
-
-    mediax = r"$\overline{x}=\frac{\sum_{i=0}^nx_i}{n}$"
-    #============================================================================================
-
-    T1 = TextAnim(text='Hello', font=None, x=.5, y=.5, rot=0, size=100, 
-                color='red', atype='increase', frames=frames, annot=False)
+    T1 = TextAnim(text='LAB', font='pixel1', x=.5, y=.5, rot=0, size=300, 
+                color='w', atype='increase', frames=frames, annot=False)
 
     plt.subplots_adjust(left=.3, bottom=.2, right=.7, top=.8, wspace=.20, hspace=.20)
 
