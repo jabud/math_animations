@@ -230,7 +230,7 @@ def main():
         'atype':'l', 'size_xy':(10,10), 'xtlabels':np.arange(0,11), 'ytlabels':np.arange(0,11),
         'everyx':1, 'everyy':1,
         }
-    cvs = canvas2D(size_xy=(20,20), frames=frames, atype='l', transform_type=True, atype2=trans,
+    cvs = canvas2D(size_xy=(20,20), frames=frames, atype='t', transform_type=True, atype2=trans,
                     xticklabels=np.arange(-10,11), yticklabels=np.arange(-10,11), grid=False, theme='dark')
     cvs.animate_axes()
 
