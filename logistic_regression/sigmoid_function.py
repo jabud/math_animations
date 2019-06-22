@@ -1,5 +1,4 @@
 # Imports
-from canvas.canvas2d import canvas2D
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,9 +6,44 @@ import matplotlib.animation as animation
 from matplotlib import font_manager as fm, rcParams
 from moviepy.editor import VideoClip
 from moviepy.video.io.bindings import mplfig_to_npimage
+from sklearn.datasets import load_breast_cancer
 
 
-class MathObject(canvas2D):
+
+def sigmoid(scores):
+    return 1 / (1 + np.exp(-scores))
+
+def log_likelihood(features, target, weights):
+    scores = np.dot(features, weights)
+    ll = np.sum( target*scores - np.log(1 + np.exp(scores)) )
+    return ll
+
+def logistic_regression(features, target, num_steps, learning_rate, add_intercept = False):
+    if add_intercept:
+        intercept = np.ones((features.shape[0], 1))
+        features = np.hstack((intercept, features))
+        
+    weights = np.zeros(features.shape[1])
+    
+    for step in xrange(num_steps):
+        scores = np.dot(features, weights)
+        predictions = sigmoid(scores)
+
+        # Update weights with gradient
+        output_error_signal = target - predictions
+        gradient = np.dot(features.T, output_error_signal)
+        weights += learning_rate * gradient
+        
+        # Print log-likelihood every so often
+        if step % 10000 == 0:
+            print log_likelihood(features, target, weights)
+        
+    return weights
+
+# weights = logistic_regression(simulated_separableish_features, simulated_labels,num_steps = 300000, learning_rate = 5e-5, add_intercept=True)
+
+
+class Sigmoid:
     def __init__(self):
         self.bg_color = '#232323'
         self.fig_color = '#d8d8d8'
@@ -45,17 +79,45 @@ class MathObject(canvas2D):
         self.ax.tick_params(width=3, length=10, direction='inout')
         # configure event to listen to
         self.cid = self.fig.canvas.mpl_connect('key_press_event', self.key_press)
+        self.cancer = load_breast_cancer()
+        self.cancer_df=pd.DataFrame(self.cancer.data,columns=cancer.feature_names)
         self.x = np.arange(-10,10)
+        self.y = self.cancer.target
 
-    def object_anim(self, i):
+    def m_anim(self, i):
         # logic for change by i
-        sig = 1/(1 + np.exp(-self.x))
-        plt.plot(self.x, sig)
+        b=0
+        m=1*(i/59)
+        sig = 1/(1 + np.exp(-b-m*self.x))
+        plt.plot(self.x, sig, color='b')
         return self.ax,plt
         # return mplfig_to_npimage(self.fig)
 
-    def animate_object(self, f):
-        anim = animation.FuncAnimation(self.fig, self.object_anim, interval=40, 
+    def animate_m(self, f):
+        anim = animation.FuncAnimation(self.fig, self.m_anim, interval=40, 
+                                        frames=f, blit=False, repeat=False)
+
+        # matplotlib
+        # anim.save('anim_b.mp4',codec='png', fps=25,
+        # dpi=200, bitrate=100, savefig_kwargs={'facecolor': self.bg_color})
+
+        #moviepy
+        # animation = VideoClip(self.line_anim_m, duration=10)
+        # animation.write_videofile('anim_b.mp4', fps=25)
+
+        plt.show()
+
+    def b_anim(self, i):
+        # logic for change by i
+        b=5*(i/59)
+        m=1
+        sig = 1/(1 + np.exp(-b-m*self.x))
+        plt.plot(self.x, sig, color='b')
+        return self.ax,plt
+        # return mplfig_to_npimage(self.fig)
+
+    def animate_b(self, f):
+        anim = animation.FuncAnimation(self.fig, self.b_anim, interval=40, 
                                         frames=f, blit=False, repeat=False)
 
         # matplotlib
@@ -86,8 +148,10 @@ class MathObject(canvas2D):
         # Separeted animations    
         elif event.key=='1':
             # some action
-            # self.static_canvas()
-            self.animate_object(100)
+            self.animate_m(np.arange(0,60))
+        elif event.key=='2':
+            # some action
+            self.animate_b(np.arange(-60,60))
         plt.show()
 
 
@@ -96,7 +160,7 @@ def main():
     rcParams['toolbar'] = 'None'
 
     # Initiate class
-    mo = MathObject()
+    sig = Sigmoid()
 
     # Configure position of graph in canvas
     # Centered
