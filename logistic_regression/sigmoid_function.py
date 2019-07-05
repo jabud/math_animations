@@ -38,8 +38,8 @@ class Sigmoid:
         self.ax.spines['left'].set_color(self.fig_color)
         self.ax.spines['bottom'].set_color(self.fig_color)
        # set linewitdh
-        self.ax.spines['left'].set_linewidth(2)
-        self.ax.spines['bottom'].set_linewidth(2)
+        self.ax.spines['left'].set_linewidth(4)
+        self.ax.spines['bottom'].set_linewidth(4)
         # ticks
         plt.xticks(ticks=np.arange(-10,11,1), labels=np.arange(-10,11,1), size=20)
         plt.yticks(ticks=np.array([0,0.5,1]), labels=np.array([0,0.5,1]), size=20)
@@ -50,6 +50,9 @@ class Sigmoid:
         self.cid = self.fig.canvas.mpl_connect('key_press_event', self.key_press)
         self.x = np.arange(-10,10)
         self.line = lines.Line2D([0], [0], color=self.funct_color, linewidth=4)
+
+        t = r"$P = \frac{1}{1+e^{-(B_1+B_2x)}}$"
+        self.show_text(t)
     
     def show_text(self, text):
         text = self.ax.text(s=text, transform=plt.gcf().transFigure,
@@ -66,7 +69,7 @@ class Sigmoid:
         b=0
         m=1*(i/49)
         sig = 1/(1 + np.exp(-b-m*self.x))
-        plt.plot(self.x, sig, color=self.data_color, alpha=.3)
+        plt.plot(self.x, sig, color=self.data_color, alpha=.2)
         self.line.set_data(self.x, sig)
         self.ax.add_line(self.line)
 
@@ -97,7 +100,7 @@ class Sigmoid:
         b=5*(i/10)
         m=1
         sig = 1/(1 + np.exp(-b-m*self.x))
-        plt.plot(self.x, sig, color=self.data_color, alpha=.3)
+        plt.plot(self.x, sig, color=self.data_color, alpha=.2)
         self.line.set_data(self.x, sig)
         self.ax.add_line(self.line)
 
