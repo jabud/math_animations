@@ -15,15 +15,15 @@ Check the code on Github here: [https://github.com/jfreek/math_animations](https
 ### Some examples:
 A cube skeleton, from geometry folder.
 
-![alt-text](/examples/cube_skeleton.gif)
+![alt-text](cube_skeleton.gif)
 
 Partial derivatives from calculus.
 
-![alt-text](https://jfreek.github.io/math_animations/examples/derivative.gif)
+![alt-text](derivative.gif)
 
 Error functions from linear regression.
 
-![alt-text](https://jfreek.github.io/math_animations/examples/e3e4.gif)
+![alt-text](e3e4.gif)
 
 ### Libraries
 I am using mainly matplotlib, although I added a few libraries for animations in the requirements.txt file, 
