@@ -1,9 +1,11 @@
 # math_animations
+
 Project with animations for mathematical objects, equations and their behavior with python 3.
 
-Still a lot to work on, but it's useful for simple mathematical examples.
-The project is intended to create educational animations, particularly videos, 
-so each part runs separately and you can save each section of your animation.
+Still a lot to work to do, but it's useful for simple mathematical examples.
+The project is intended to create intuitive animations. 
+
+To create videos I run animations in separate steps and then join each section as complete video.
 
 ### Some examples:
 A cube skeleton, from geometry folder.

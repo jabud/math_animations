@@ -15,7 +15,7 @@ Check the code on Github here: [https://github.com/jfreek/math_animations](https
 ### Some examples:
 A cube skeleton, from geometry folder.
 
-![alt-text](https://jfreek.github.io/math_animations/examples/cube_skeleton.gif)
+![alt-text](/examples/cube_skeleton.gif)
 
 Partial derivatives from calculus.
 
