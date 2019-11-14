@@ -1,2 +1,7 @@
 */__pycache__/*
 *.pyc
+*.bundle
+_site/
+.sass-cache/
+*.lock
+/Gemfile
