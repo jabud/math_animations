@@ -11,21 +11,7 @@ dark_footer: true           # keep the footer dark
 # style: minimal             # use a simpler style inspired by the minima theme
 
 navigation:                  # site navigation in the header
-  - Home: "https://jfreek.github.io/"
-  - About: "https://jfreek.github.io/#about"
-  - Github: "http://github.com/jfreek"
-  - Blog: "https://jfreek.github.io/blog"
-  - Contact: "https://jfreek.github.io/#contact"
-
-# icons:                      # icons in the header, see http://fontawesome.com/icons
- # envelope: "mailto:jorge@jabud.tech"
- # github: "https://github.com/jfreek"
- # linkedin: "https://www.linkedin.com/in/jorgeabud/"
- # rss: "/blog/feed.xml"
-
-comments:                    # embed disqus or isso comments
-#  disqus: ""
-#  isso: ""
+  - View on Github: "http://github.com/jfreek/math_animations"
 
 plugins:
   - jekyll-remote-theme
