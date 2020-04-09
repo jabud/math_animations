@@ -48,4 +48,4 @@ All you have to do is save it in this path `python3.6/site-packages/matplotlib/m
  The ones from linear_regression and calculus run using the keyboard. Using numbers from 1 to N, for each step of the animation.
  0 resets the animation.
  
- ... I think that is it, if you have any questions you can send me an email to: jorge@jabud.tech
+ ... I think that is it, if you have any questions you can send me an email to: jorge.abud@pm.me
