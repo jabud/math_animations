@@ -10,7 +10,7 @@ The project is intended to create intuitive animations.
 
 To create videos I run animations in separate steps and then join each section as complete video.
 
-Check the code on Github here: [https://github.com/jfreek/math_animations](https://github.com/jfreek/math_animations)
+Check the code on Github here: [https://github.com/jabud/math_animations](https://github.com/jabud/math_animations)
 
 ### Some examples:
 A cube skeleton, from geometry folder.
