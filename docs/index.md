@@ -10,7 +10,7 @@ The project is intended to create intuitive animations.
 
 To create videos I run animations in separate steps and then join each section as complete video.
 
-Check the code on Github here: [https://github.com/jfreek/math_animations](https://github.com/jfreek/math_animations)
+Check the code on Github here: [https://github.com/jabud/math_animations](https://github.com/jabud/math_animations)
 
 ### Some examples:
 A cube skeleton, from geometry folder.
@@ -48,4 +48,4 @@ All you have to do is save it in this path `python3.6/site-packages/matplotlib/m
  The ones from linear_regression and calculus run using the keyboard. Using numbers from 1 to N, for each step of the animation.
  0 resets the animation.
  
- ... I think that is it, if you have any questions you can send me an email to: jorge@jabud.tech
+ ... I think that is it, if you have any questions you can send me an email to: jorge.abud@pm.me

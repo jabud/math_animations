@@ -10,15 +10,15 @@ To create videos I run animations in separate steps and then join each section a
 ### Some examples:
 A cube skeleton, from geometry folder.
 
-![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/cube_skeleton.gif)
+![alt-text](https://github.com/jabud/math_animations/blob/master/examples/cube_skeleton.gif)
 
 Partial derivatives from calculus.
 
-![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/derivative.gif)
+![alt-text](https://github.com/jabud/math_animations/blob/master/examples/derivative.gif)
 
 Error functions from linear regression.
 
-![alt-text](https://github.com/jfreek/math_animations/blob/master/examples/e3e4.gif)
+![alt-text](https://github.com/jabud/math_animations/blob/master/examples/e3e4.gif)
 
 ### Libraries
 I am using mainly matplotlib, although I added a few libraries for animations in the requirements.txt file, 
@@ -43,4 +43,4 @@ All you have to do is save it in this path `python3.6/site-packages/matplotlib/m
  The ones from linear_regression and calculus run using the keyboard. Using numbers from 1 to N, for each step of the animation.
  0 resets the animation.
  
- ... I think that is it, if you have any questions you can send me an email to: jorge@jabud.tech
+ ... I think that is it, if you have any questions you can send me an email to: jorge.abud@pm.me
